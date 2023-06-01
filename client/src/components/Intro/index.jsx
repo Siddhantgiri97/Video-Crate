@@ -18,7 +18,7 @@ function Intro() {
                 <div className="row gx-5 align-items-center justify-content-center">
                     <div className="col-lg-8 col-xl-7 col-xxl-6">
                         <div className="my-5 text-center text-xl-start">
-                            <h1 className="display-5 fw-bolder text-white mb-2">Scan & Detect Deepfake Videos
+                            <h1 className="display-5 fw-bolder text-white mb-2">Scan & Trace Deepfake Videos
                             </h1>
                             <p className="lead fw-normal text-white-50 mb-4">Scan a suspicious video to find out if it’s
                                 synthetically manipulated</p>
@@ -38,7 +38,7 @@ function Intro() {
             <div className="container px-5 my-5">
                 <div className="row gx-5">
                     <div className="col-lg-4 mb-5 mb-lg-0">
-                        <h2 className="fw-bolder mb-0">A better way to start detecting.</h2>
+                        <h2 className="fw-bolder mb-0">A better way to start countering.</h2>
                     </div>
                     <div className="col-lg-8">
                         <div className="row gx-5 row-cols-1 row-cols-md-2">

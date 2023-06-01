@@ -7,6 +7,7 @@ import { useEth } from '../../contexts/EthContext';
 
 function NavEle() {
   const {state:{accounts}} = useEth();
+  
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -30,6 +31,7 @@ function NavEle() {
               Grant Attestation
               </NavDropdown.Item>          
             </NavDropdown>
+            <Nav.Link as={Link} to="/explore" className="nav-links" >Explore</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">{accounts}</Nav.Link>

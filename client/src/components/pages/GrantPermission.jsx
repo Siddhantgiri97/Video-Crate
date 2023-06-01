@@ -25,18 +25,30 @@ const GrantPermission = () => {
         const result = e.target.result.value;
         const artist = e.target.artist.value;
         const ipfsHash = e.target.ipfsHash.value;
+        var isTrueSet = (result?.toLowerCase?.() === 'true');
 
-        await contract.methods.grantPermission(result, artist, ipfsHash).send({ from: accounts[0] }).then(() => {
+
+        await contract.methods.grantPermission(isTrueSet, artist, ipfsHash).send({ from: accounts[0] }).then(() => {
             setResult(result);
             setArtist(artist);
             setIpfsHash(ipfsHash);
             e.target.reset();
 
-            Swal.fire({
-                icon: 'success',
-                title: 'Good job !',
-                text: 'Permission granted successfully to' + artist,
-            })
+
+            if(isTrueSet){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job !',
+                    text: 'Permission granted successfully to' + artist,
+                })
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something went wrong',
+                    text: 'Permission Denied to ' + artist,
+                })
+            }
+            
         }).catch((event) => {
             Swal.fire({
                 icon: 'error',
@@ -68,7 +80,7 @@ const GrantPermission = () => {
                                 <form id="contactForm" onSubmit={grantingPermission}>
 
                                     <div className="form-fliating mb-3">
-                                        <select className="form-select form-select-lg" id='result' aria-label="Default select example" defaultValue={true}>
+                                        <select className="form-select form-select-lg" id='result' aria-label="Default select example">
                                             <option value={true}>True</option>
                                             <option value={false}>False</option>
                                         </select>
@@ -115,12 +127,11 @@ const GrantPermission = () => {
 
             <div className='container'>
                 <h1>Reuested Videos</h1>
-                {requests.map((request) => {
+                {requests.slice(0).reverse().map((request) => {
                     return (<Alert variant="success" key={Math.random()} className='mb-2' style={{overflowWrap: 'break-word'}}>
                         <Alert.Heading>Sender: {request.sender} -&gt; Content Hash:  {request.content}</Alert.Heading>
                     </Alert>
                     )
-
                 })
                 }
             </div>

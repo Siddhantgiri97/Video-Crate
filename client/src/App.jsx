@@ -10,6 +10,7 @@ import GrantPermission from './components/pages/GrantPermission';
 import RequestAttestation from './components/pages/RequestAttestation';
 import GrantAttestation from './components/pages/GrantAttestation';
 import AddVideo from "./components/pages/AddVideo";
+import ExploreVideos from "./components/pages/ExploreVideos";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/grant-permission" element={<GrantPermission />} />
           <Route path="/request-attestation" element={<RequestAttestation />} />
           <Route path="/grant-attestation" element={<GrantAttestation />} />
+          <Route path="/explore" element={<ExploreVideos />} />
         </Routes>
       </Router>
       </EthProvider>

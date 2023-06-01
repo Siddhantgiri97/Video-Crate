@@ -10,7 +10,6 @@ import { useEth } from '../../contexts/EthContext';
 import bs58 from 'bs58';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
 import MyVerticallyCenteredModal from '../Intro/MyVerticallyCenteredModal';
 
 
@@ -27,7 +26,7 @@ const AddVideo = () => {
 
   useEffect(() => {
     const getVideoList = async () => {
-      const videos = await contract.methods.getAgreeVideos().call({ from: accounts[0] });
+      const videos = await contract.methods.getRegVideos().call({ from: accounts[0] });
       setVideoList(videos);
     }
     contract && getVideoList();
@@ -181,8 +180,8 @@ const AddVideo = () => {
             {videoList.map((video) => {
               return (
                 <Col>
-                  <Card style={{ width: '20rem' }} key={Math.random()}>
-                    <Card.Img variant="top" src="banner.jpg" />
+                  <Card style={{ width: '22rem',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }} key={Math.random()}>
+                    <Card.Img variant="top" src="block.jpg" />
                     <Card.Body>
                       <Card.Title>
                         {video.vid_owner}

@@ -217,6 +217,7 @@ constructor() public{
          Granted_Permissions[hash].state = artistState.GrantedAttestation;
          Requests[hash].state = artistState.GrantedAttestation; 
          Records[newHash] = hash;
+         requestEntries.pop();
          emit AttestationGranted("Successfully Attested: ", newHash);
         }
         else

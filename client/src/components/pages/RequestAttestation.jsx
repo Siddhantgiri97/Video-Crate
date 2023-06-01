@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import NavEle from '../Intro/navbar';
 import { useEth } from '../../contexts/EthContext';
 import Form from 'react-bootstrap/Form';
 import bs58 from 'bs58';
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import Swal from 'sweetalert2';
+import Alert from 'react-bootstrap/Alert';
 
 const projectId = "2MVQ2wILBSZ1A1V4wDYc5xzPZ1B";
 const projectSecretKey = "1370df8f638b47f917e868c9c7bb3368"
@@ -17,6 +18,16 @@ const RequestAttestation = () => {
     const [ipfsHash, setIpfsHash] = useState('');
     const [metaData, setMetaData] = useState('');
     const [newIpfsHash, setnewIpfsHash] = useState('');
+    const [requests, setRequests] = useState([]);
+
+
+    useEffect(() => {
+        const getRequestList = async () => {
+            const entries = await contract.methods.getRequestEntries().call({ from: accounts[0] });
+            setRequests(entries);
+        }
+        contract && getRequestList();
+    }, [contract, accounts]);
 
 
     const ipfs = ipfsHttpClient({
@@ -151,6 +162,18 @@ const RequestAttestation = () => {
 
                 </div>
             </section>
+
+            <div className='container'>
+                <h1>Reuested Videos</h1>
+                {requests.map((request) => {
+                    return (<Alert variant="success" key={Math.random()} className='mb-2' style={{overflowWrap: 'break-word'}}>
+                        <Alert.Heading>Sender: {request.sender} -&gt; Content Hash:  {request.content}</Alert.Heading>
+                    </Alert>
+                    )
+
+                })
+                }
+            </div>
         </div>
     )
 }

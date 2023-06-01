@@ -2,7 +2,10 @@ import React,{useState,useEffect} from 'react';
 import NavEle from '../Intro/navbar';
 import { useEth } from '../../contexts/EthContext';
 import Swal from 'sweetalert2';
-import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const GrantAttestation = () => {
     const {state:{contract,accounts}} = useEth();
@@ -11,14 +14,16 @@ const GrantAttestation = () => {
     const [ipfsHash,setIpfsHash] = useState('');
     const [metaData, setMetaData] = useState('');
     const [newHash,setNewHash] = useState('');
-    const [requests, setRequests] = useState([]);
+
+
+    const [videoList, setVideoList] = useState([]);
 
     useEffect(() => {
-        const getRequestList = async () => {
-            const entries = await contract.methods.getRequestEntries().call({ from: accounts[0] });
-            setRequests(entries);
-        }
-        contract && getRequestList();
+      const getVideoList = async () => {
+        const videos = await contract.methods.getRegVideos().call({ from: accounts[0] });
+        setVideoList(videos);
+      }
+      contract && getVideoList();
     }, [contract, accounts]);
 
     const grantingAttestation = async (e) =>{
@@ -29,18 +34,29 @@ const GrantAttestation = () => {
         const ipfsHash = e.target.ipfsHash.value;
         const metaData = e.target.metaData.value;
         const newHash = e.target.newHash.value;
+        var isTrueSet = (result?.toLowerCase?.() === 'true');
 
-        await contract.methods.GrantAttestation(result,videoName,ipfsHash,metaData,newHash).send({from:accounts[0]}).then(()=>{
+        await contract.methods.GrantAttestation(isTrueSet,videoName,ipfsHash,metaData,newHash).send({from:accounts[0]}).then(()=>{
             setResult(result);
         setVideoName(videoName);
         setIpfsHash(ipfsHash);
         setMetaData(metaData);
         setNewHash(newHash);
-        Swal.fire({
+
+        if(isTrueSet){
+          Swal.fire({
             icon: 'success',
             title: 'Good job !',
             text: 'Attestation Granted successfully to '+ newHash,
           })
+        
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong',
+            text: 'Attestation Denied',
+        })
+        }
         e.target.reset();
         }).catch(() =>{
             Swal.fire({
@@ -125,16 +141,37 @@ const GrantAttestation = () => {
 
 
         <div className='container'>
-                <h1>Reuested Videos</h1>
-                {requests.map((request) => {
-                    return (<Alert variant="success" key={Math.random()} className='mb-2' style={{overflowWrap: 'break-word'}}>
-                        <Alert.Heading>Sender: {request.sender} -&gt; Content Hash:  {request.content}</Alert.Heading>
-                    </Alert>
-                    )
-
-                })
-                }
-            </div>
+          <div>
+            <h1 className='mb-5 text-center'>Latest Attestation Requested Videos</h1>
+          </div>
+          <Row xs={1} md={2} className="g-3 mb-5">
+            {videoList.slice(0).reverse().map((video) => {
+              return (
+                <Col>
+                  <Card style={{ width: '22rem',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }} key={Math.random()}>
+                    <Card.Img variant="top" src="block.jpg" />
+                    <Card.Body>
+                      <Card.Title>
+                        {video.vid_owner}
+                      </Card.Title>
+                      <Card.Title>{video.info}</Card.Title>
+                      <Card.Text>
+                        {video.IPFS_Hash}
+                      </Card.Text>
+                      <Card.Text>
+                        {video.metadata}
+                      </Card.Text>
+                      <Card.Text>
+                        {video.timestamp}
+                      </Card.Text>
+                      <Button variant="primary">Go somewhere</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              )
+            })}
+          </Row>
+        </div>
     </div>
   )
 }
