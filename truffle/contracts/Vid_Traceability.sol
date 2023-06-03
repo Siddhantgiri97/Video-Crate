@@ -101,10 +101,7 @@ constructor() public{
         
     }
 
-     //Random ipfs hash generator
-    function generateRandom() public view returns (bytes32) {
-        return bytes32(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, block.coinbase)));
-    }
+     
 
     function getRegVideos() public view returns(Video[] memory){
         return regVideos;

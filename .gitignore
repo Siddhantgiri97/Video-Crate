@@ -10,6 +10,7 @@ build
 client/src/contracts
 client/*/src/contracts
 
+.secret
 # Testing
 coverage
 
