@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useEth } from '../../contexts/EthContext';
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
-var image2 = require("../assets/block.jpg");
+
 
 
 

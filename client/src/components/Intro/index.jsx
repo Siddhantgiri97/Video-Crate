@@ -1,6 +1,6 @@
 import NavEle from './navbar';
 import { Link } from 'react-router-dom';
-var image1 = require("../assets/banner.jpg");
+
 
 
 
