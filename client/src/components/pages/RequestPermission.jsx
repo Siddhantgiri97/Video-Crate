@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
-import image2 from "../assets/block";
+import image2 from "../assets/block.jpg";
 
 const RequestPermission = () => {
     const { state: { contract, accounts } } = useEth();

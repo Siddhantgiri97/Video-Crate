@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import image2 from "../assets/block";
+import image2 from "../assets/block.jpg";
 
 const GrantAttestation = () => {
     const {state:{contract,accounts}} = useEth();
