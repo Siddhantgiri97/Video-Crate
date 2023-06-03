@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import image2 from "../assets/block";
 
 const GrantAttestation = () => {
     const {state:{contract,accounts}} = useEth();
@@ -149,7 +150,7 @@ const GrantAttestation = () => {
               return (
                 <Col>
                   <Card style={{ width: '22rem',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }} key={Math.random()}>
-                    <Card.Img variant="top" src="block.jpg" />
+                    <Card.Img variant="top" src={image2} />
                     <Card.Body>
                       <Card.Title>
                         {video.vid_owner}

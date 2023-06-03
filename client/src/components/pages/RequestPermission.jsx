@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
+import image2 from "../assets/block";
 
 const RequestPermission = () => {
     const { state: { contract, accounts } } = useEth();
@@ -95,7 +96,7 @@ return (
               return (
                 <Col>
                   <Card key={Math.random()} style={{width: '22rem',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
-                    <Card.Img variant="top" src="../assets/block.jpg" />
+                    <Card.Img variant="top" src={image2} />
                     <Card.Body>
                       <Card.Title>
                         {video.vid_owner}

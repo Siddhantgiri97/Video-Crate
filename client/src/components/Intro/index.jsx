@@ -1,5 +1,6 @@
 import NavEle from './navbar';
 import { Link } from 'react-router-dom';
+import image1 from "../assets/banner"
 
 
 
@@ -29,7 +30,7 @@ function Intro() {
                         </div>
                     </div>
                     <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img className="img-fluid rounded-3 my-5"
-                            src="../assets/banner.jpg" alt="..." /></div>
+                            src={image1} alt="..." /></div>
                 </div>
             </div>
         </header>
