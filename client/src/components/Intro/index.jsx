@@ -29,7 +29,7 @@ function Intro() {
                         </div>
                     </div>
                     <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img className="img-fluid rounded-3 my-5"
-                            src="banner.jpg" alt="..." /></div>
+                            src="../assets/banner.jpg" alt="..." /></div>
                 </div>
             </div>
         </header>
