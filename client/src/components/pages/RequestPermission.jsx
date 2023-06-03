@@ -96,7 +96,7 @@ return (
               return (
                 <Col>
                   <Card key={Math.random()} style={{width: '22rem',boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
-                    <Card.Img variant="top" src={image2} />
+                    <Card.Img variant="top" src="https://unsplash.com/photos/JlijbOtSWuw" />
                     <Card.Body>
                       <Card.Title>
                         {video.vid_owner}
