@@ -30,7 +30,7 @@ function Intro() {
                         </div>
                     </div>
                     <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img className="img-fluid rounded-3 my-5"
-                            src="https://unsplash.com/photos/UxDU0Gg5pqQ" alt="..." /></div>
+                            src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w" alt="..." /></div>
                 </div>
             </div>
         </header>
