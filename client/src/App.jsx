@@ -13,6 +13,13 @@ import AddVideo from "./components/pages/AddVideo";
 import ExploreVideos from "./components/pages/ExploreVideos";
 
 function App() {
+  useEffect(() => {
+    // MetaMask detection code
+    if (typeof window.ethereum === 'undefined' || typeof window.ethereum.isMetaMask === 'undefined') {
+      // MetaMask is not installed, show a message or handle the case
+      alert("MetaMask is not installed. Please install MetaMask to use this dApp.");
+    }
+  }, []);
   return (
     
       <div id="">
