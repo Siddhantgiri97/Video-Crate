@@ -1,3 +1,4 @@
+import {  useEffect } from "react";
 import { EthProvider } from "./contexts/EthContext";
 import Intro from "./components/Intro/";
 import 'bootstrap/dist/css/bootstrap.min.css';
